@@ -31,6 +31,73 @@
         console.log(lastLetter('abcd'));
 
     </script>
+    <script>
+        function computerPlay() {
+            array = ['ROCK', 'PAPER', 'SCISSORS'];
+            let computerChoice = '';
+            for(i=0; i<array.length; i++) {
+                let number = Math.floor(Math.random() * 3);
+                computerChoice = array[number]
+                return computerChoice;
+            }
+        }
+
+        function rockPaperScissors(playerSelection, computerSelection) {
+            let humanChoice = playerSelection.toUpperCase();
+            let computerChoice = computerSelection.toUpperCase();
+            // console.log(humanChoice, computerChoice);
+            if(humanChoice === computerChoice) {
+                return "Looks like it's a tie game. Try again?"
+            }
+            else if(humanChoice === 'ROCK' && computerChoice === 'SCISSORS'){
+                return "You smashed that computers scissors real good!"
+            }
+            else if(humanChoice === 'ROCK' && computerChoice === 'PAPER') {
+                return "Computer chose paper and it is now covering your rock... Better luck next time."
+            }
+            else if(humanChoice === 'PAPER' && computerChoice === 'ROCK') {
+                return "Nicely done, you win!"
+            }
+            else if(humanChoice === 'PAPER' && computerChoice === 'SCISSORS') {
+                return "Snip snap your paper is done for."
+            }
+            else if(humanChoice === 'SCISSORS' && computerChoice === 'PAPER') {
+                return "You cut them deep on that one! Way to go!"
+            }
+            else if(humanChoice === 'SCISSORS' && computerChoice === 'ROCK') {
+                return "SMASH!! Your scissors are all busted up!"
+            }
+        }
+
+        function game() {
+            let score = {
+                human: 0,
+                computer: 0
+            }
+            for(i=0; i<=5; i++) {
+                let result = rockPaperScissors(window.prompt('Enter a ROCK, PAPER, or SCISSORS'), computerPlay());
+                console.log(result);
+                if(result === "Computer chose paper and it is now covering your rock... Better luck next time." || result === "Snip snap your paper is done for." || result === "SMASH!! Your scissors are all busted up!") {
+                    score.computer++
+                    console.log(score);
+                }
+                else if(result === "You smashed that computers scissors real good!" || result === "Nicely done, you win!" || result === "You cut them deep on that one! Way to go!") {
+                    score.human++
+                    console.log(score);
+                }
+                if(score.human === 5) {
+                    console.log("You did it! You defeated the computer!");
+                    return true
+                }
+                if(score.computer === 5) {
+                    console.log("[a] computer may be clever, but human beings are much smarter");
+                    return false
+                }
+            }
+        }
+
+        game();
+    </script>
     <!-- <div class="grid">
         <div class="row">
             <div class="column"><p> </p></div>
